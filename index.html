@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wintyx</title>
+    <style>
+      html, body { background: #0E0F13; margin: 0; }
+      html[data-theme="daylight"], html[data-theme="daylight"] body { background: #FAFAFB; }
+      .boot { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; height: 100vh; font-family: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif; }
+      .boot-name { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: #E7E8EC; }
+      .boot-track { width: 96px; height: 2px; border-radius: 1px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+      .boot-track::after { content: ""; display: block; width: 40%; height: 100%; background: #2EC4D6; animation: boot 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+      .boot-left { stroke: #E7E8EC; }
+      html[data-theme="daylight"] .boot-name { color: #14161C; }
+      html[data-theme="daylight"] .boot-left { stroke: #14161C; }
+      html[data-theme="daylight"] .boot-track { background: rgba(15, 17, 23, 0.08); }
+      html[data-theme="daylight"] .boot-track::after { background: #0B6E7C; }
+      @keyframes boot { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+      @media (prefers-reduced-motion: reduce) { .boot-track::after { animation: none; width: 100%; } }
+    </style>
+    <script>
+      (function () {
+        var t;
+        try { t = localStorage.getItem("wintyx-theme"); } catch (e) { t = null; }
+        var theme = t === "daylight" || t === "nordic" ? "daylight" : "obsidian";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot" role="status" aria-label="Chargement de Wintyx">
+        <svg width="56" height="40" viewBox="160 240 720 520" aria-hidden="true">
+          <defs>
+            <linearGradient id="boot-ion" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#1FA9C9" />
+              <stop offset="1" stop-color="#5EEAD4" />
+            </linearGradient>
+          </defs>
+          <polyline class="boot-left" points="214,372 352,690 494,438" fill="none" stroke-width="96" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="494,438 624,690 822,300" fill="none" stroke="url(#boot-ion)" stroke-width="96" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="boot-name">Wintyx</span>
+        <span class="boot-track"></span>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

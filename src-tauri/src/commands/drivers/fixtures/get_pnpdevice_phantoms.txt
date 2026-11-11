@@ -1,0 +1,9 @@
+USB\VID_1234&PID_0001\0123456789ABCDEF|Téléphone USB|WPD|Fabricant A|Unknown
+HID\VID_2345&PID_0002&MI_05&COL01\A&1A2B3C4&0&0000|Périphérique de contrôle consommateur conforme aux Périphériques d'interface utilisateur (HID)|HIDClass|Microsoft|Unknown
+USB\VID_2345&PID_0003&MI_03\9&5D6E7F8&1&0003|Périphérique d’entrée USB|HIDClass|(Périphériques système standard)|Unknown
+BTHENUM\{00001116-0000-1000-8000-00805F9B34FB}_VID&00010FFF_PID&0001\B&9A8B7C6&0&AABBCCDDEEFF_C00000000|Service NAP de réseau personnel|Bluetooth|Microsoft|Unknown
+BTHENUM\{A82EFA21-AE5C-3DDE-9BBC-F16DA7B16C5A}_VID&00010FFF_PID&0001\B&9A8B7C6&0&AABBCCDDEEFF_C00000000|NearbySharing|||Unknown
+SWD\DRIVERENUM\{11111111-2222-4333-8444-555555555555}#COMPOSANT_0001&A&12345678&0|Composant logiciel|SoftwareComponent|Fabricant B|Unknown
+USB\VID_3456&PID_0004\0011:2233:4455|Carte de développement USB|USB|Fabricant C|Unknown
+STORAGE\VOLUME\{00000000-0000-0000-0000-000000000000}#0000000000100000|Volume de stockage générique|Volume|Microsoft|Unknown
+SWD\MMDEVAPI\{0.0.0.00000000}.{8c8b0a1e-6b1d-4a3e-9f0e-2d8c8f1a7b11}|Haut-parleurs|AudioEndpoint|Microsoft|Unknown

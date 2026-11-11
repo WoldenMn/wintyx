@@ -1,0 +1,73 @@
+Wintyx — Maintenance, sécurité et optimisation de Windows
+=========================================================
+
+Installation
+------------
+Choisissez UN des 3 fichiers (<version> : le numéro de la version,
+aussi affiché dans la page « À propos ») :
+
+1. Wintyx_<version>_x64-setup.exe (NSIS) — RECOMMANDÉ
+   Installe Wintyx pour votre compte, dans %LOCALAPPDATA%\Wintyx,
+   sans droits administrateur. Désinstallation depuis
+   Paramètres > Applications.
+
+2. Wintyx_<version>_x64_fr-FR.msi (MSI)
+   Même application au format Windows Installer, pour un
+   déploiement par GPO ou outil d'entreprise.
+
+3. Wintyx.exe (portable)
+   Se lance directement, sans installation.
+
+Prérequis : Windows 10 ou 11, 64 bits.
+
+Droits administrateur
+---------------------
+Sans droits administrateur, Wintyx lit tout : scores, diagnostics,
+pilotes, tâches, réseau, benchmark. Les actions qui écrivent dans
+HKLM ou touchent un service (durcissement, services, restauration
+de clés système) affichent un cadenas et « Droits administrateur
+requis ». Le bouton « Relancer en admin », en bas de la fenêtre,
+redémarre Wintyx avec ces droits.
+
+Un contrôle que Wintyx ne peut pas lire s'affiche « Inconnu » : il
+n'est jamais compté comme sécurisé.
+
+Premiers pas
+------------
+1. Au lancement, Wintyx calcule les scores des 5 domaines.
+2. Ouvrez un domaine depuis le tableau de bord pour voir le détail.
+3. « Profils » applique un ensemble de réglages (Bureau, Discrétion
+   max, Gaming, Performance) ; clonez-en un pour le personnaliser.
+4. Si une page affiche une erreur, « Diagnostic » vérifie les
+   prérequis (WMI, PowerShell, droits, stockage).
+
+Sécurité
+--------
+- Avant chaque lot qui écrit dans le registre, Wintyx sauvegarde les
+  clés critiques et, en mode administrateur, crée un point de
+  restauration Windows. Si la sauvegarde échoue, il demande
+  confirmation avant de continuer.
+- Windows ne crée qu'un point de restauration par 24 h : Wintyx le
+  signale au lieu d'annoncer un point qui n'existe pas.
+- Le nettoyage supprime des fichiers temporaires et ne prend pas
+  de sauvegarde : relisez la liste avant de confirmer.
+- Wintyx n'envoie aucune donnée : pas de compte, pas de serveur, pas de
+  télémétrie. Seules sorties réseau : un ping (test de connectivité,
+  benchmark) et, sur clic, la lecture de l'IP publique auprès
+  d'api.ipify.org (page Réseau).
+
+Données de Wintyx
+-----------------
+- Journal : %LOCALAPPDATA%\Wintyx\Logs (7 jours)
+- Sauvegardes du registre : %LOCALAPPDATA%\Wintyx\Backups
+- Historique des scores et des benchmarks : %LOCALAPPDATA%\Wintyx
+- Profils personnalisés : %APPDATA%\Wintyx\custom_profiles.json
+
+Un fichier de données illisible n'est jamais écrasé : il est mis de
+côté sous le nom <fichier>.corrompu-<date>.json.
+
+Documentation
+-------------
+- README.md : vue d'ensemble
+- CHANGELOG.md : nouveautés de chaque version
+- docs/USER_GUIDE.md : guide d'utilisation

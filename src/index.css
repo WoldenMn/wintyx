@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THEME SYSTEM — 2 themes via CSS custom properties
+   Le theme actif est defini par l'attribut data-theme sur <html>.
+   Les classes Tailwind (bg-bg-primary, text-fg-primary, etc.) resolvent
+   automatiquement vers le theme actif.
+   ============================================================ */
+
+@theme {
+  --color-bg-primary: var(--t-bg-primary);
+  --color-bg-secondary: var(--t-bg-secondary);
+  --color-bg-card: var(--t-bg-card);
+  --color-bg-elevated: var(--t-bg-elevated);
+  --color-bg-hover: var(--t-bg-hover);
+  --color-bg-input: var(--t-bg-input);
+  --color-bg-sidebar: var(--t-bg-sidebar);
+  --color-fg-primary: var(--t-fg-primary);
+  --color-fg-dim: var(--t-fg-dim);
+  --color-fg-muted: var(--t-fg-muted);
+  --color-accent: var(--t-accent);
+  --color-accent-hover: var(--t-accent-hover);
+  --color-accent-light: var(--t-accent-light);
+  --color-success: var(--t-success);
+  --color-warning: var(--t-warning);
+  --color-danger: var(--t-danger);
+  --color-info: var(--t-info);
+  --color-border: var(--t-border);
+  --color-divider: var(--t-divider);
+  --color-success-contrast: var(--t-success-contrast);
+  --color-warning-contrast: var(--t-warning-contrast);
+  --color-danger-contrast: var(--t-danger-contrast);
+  --color-info-contrast: var(--t-info-contrast);
+  --color-accent-contrast: var(--t-accent-contrast);
+  --color-on-accent: var(--t-on-accent);
+  --color-on-semantic: var(--t-on-semantic);
+  --font-mono: "Cascadia Mono", Consolas, ui-monospace, monospace;
+  --font-display: "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ============================================================
+   THEME 1: OBSIDIAN (sombre, defaut)
+   ============================================================ */
+[data-theme="obsidian"], :root {
+  --t-bg-primary: #0E0F13;
+  --t-bg-secondary: #14161C;
+  --t-bg-card: #16181F;
+  --t-bg-elevated: #1C1F28;
+  --t-bg-hover: #1A1D24;
+  --t-bg-input: #13151B;
+  --t-bg-sidebar: #0B0C10;
+  --t-fg-primary: #E7E8EC;
+  --t-fg-dim: #9A9CA6;
+  --t-fg-muted: #84868F;
+  --t-accent: #2EC4D6;
+  --t-accent-hover: #22AFC1;
+  --t-accent-light: rgba(46, 196, 214, 0.14);
+  --t-success: #34D399;
+  --t-warning: #FBBF24;
+  --t-danger: #F87171;
+  --t-info: #60A5FA;
+  --t-success-contrast: #6EE7B7;
+  --t-warning-contrast: #FCD34D;
+  --t-danger-contrast: #FCA5A5;
+  --t-info-contrast: #93C5FD;
+  --t-accent-contrast: #7DE3EE;
+  --t-on-accent: #0B0D11;
+  --t-on-semantic: #15120C;
+  --t-border: rgba(255, 255, 255, 0.07);
+  --t-divider: rgba(255, 255, 255, 0.05);
+  --t-card-radius: 12px;
+  --t-font: "Segoe UI Variable Text", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --t-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --t-ring-track: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   THEME 2: DAYLIGHT (clair)
+   ============================================================ */
+[data-theme="daylight"] {
+  --t-bg-primary: #FAFAFB;
+  --t-bg-secondary: #F3F4F6;
+  --t-bg-card: #FFFFFF;
+  --t-bg-elevated: #FFFFFF;
+  --t-bg-hover: #F0F1F4;
+  --t-bg-input: #FFFFFF;
+  --t-bg-sidebar: #F5F6F8;
+  --t-fg-primary: #14161C;
+  --t-fg-dim: #565963;
+  --t-fg-muted: #5E6169;
+  --t-accent: #0B6E7C;
+  --t-accent-hover: #095E6A;
+  --t-accent-light: rgba(11, 110, 124, 0.10);
+  --t-success: #0A7A4D;
+  --t-warning: #B45309;
+  --t-danger: #DC2626;
+  --t-info: #2563EB;
+  --t-success-contrast: #047857;
+  --t-warning-contrast: #92400E;
+  --t-danger-contrast: #991B1B;
+  --t-info-contrast: #1D4ED8;
+  --t-accent-contrast: #095E6A;
+  --t-on-accent: #FFFFFF;
+  --t-on-semantic: #FFFFFF;
+  --t-border: rgba(15, 17, 23, 0.10);
+  --t-divider: rgba(15, 17, 23, 0.07);
+  --t-card-radius: 12px;
+  --t-font: "Segoe UI Variable Text", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --t-card-shadow: 0 1px 2px rgba(15, 17, 23, 0.06);
+  --t-ring-track: rgba(15, 17, 23, 0.08);
+}
+
+/* ============================================================
+   THEME-AWARE COMPONENT STYLES
+   ============================================================ */
+
+.theme-card {
+  border-radius: var(--t-card-radius);
+  box-shadow: var(--t-card-shadow);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in { animation: slide-in 0.2s var(--ease-brand); }
+.animate-page-in { animation: page-in 0.16s var(--ease-brand); }
+
+@layer base {
+  button:not(:disabled) {
+    transition-property: color, background-color, border-color, opacity, transform;
+    transition-duration: 120ms;
+    transition-timing-function: var(--ease-brand);
+  }
+  button:not(:disabled):active { transform: scale(0.98); transition-duration: 80ms; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--t-font);
+  font-variant-numeric: tabular-nums;
+  background: var(--t-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--t-accent-light); color: var(--t-fg-primary); }
+
+/* Gouttiere reservee en permanence : la largeur utile ne depend plus de la presence
+   de la barre de defilement (run 11 D11). Le conteneur qui defile est la racine de page. */
+#main-content .animate-page-in > .overflow-y-auto { scrollbar-gutter: stable; }
+/* Liste de la sidebar : a faible hauteur elle defile, la barre doit se voir. */
+.sidebar-scroll::-webkit-scrollbar { width: 10px; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: var(--t-fg-muted); border-radius: 5px; border: 2px solid var(--t-bg-sidebar); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--t-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--t-fg-muted); }
+
+/* Accessibilite : masquer visuellement tout en gardant accessible aux lecteurs d'ecran */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.focus\:not-sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,37 @@
+[package]
+name = "wintyx"
+version = "1.0.0"
+description = "Application de maintenance et protection Windows"
+license = "MIT"
+repository = "https://github.com/WoldenMn/wintyx"
+authors = ["Wintyx"]
+edition = "2021"
+rust-version = "1.88"
+
+[lib]
+name = "wintyx_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+wmi = "0.14"
+windows-registry = "0.4"
+chrono = "0.4"
+specta = "=2.0.0-rc.20"
+specta-typescript = "0.0.7"
+tauri-specta = { version = "=2.0.0-rc.20", features = ["derive", "typescript"] }
+
+[features]
+default = []
+perf = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true

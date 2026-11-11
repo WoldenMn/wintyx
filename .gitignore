@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+# bun.lock est volontairement VERSIONNE : sans lui, un clone frais ne reinstalle
+# pas les memes versions. La regle qui l'excluait ici contredisait le fichier
+# reellement suivi (git ls-files -ci le signalait).
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
+coverage/
+.vite/
+.turbo/
+.next/
+
+# Rust / Tauri
+src-tauri/target/
+
+# Logs
+*.log
+
+# Environment
+*.local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Release binaries (built on demand)
+Install/Wintyx.exe
+Install/Wintyx_*.exe
+Install/*.msi
+
+# Claude Code : config machine seulement, PAS `.claude/` en bloc (un settings.json partage est legitime)
+.claude/settings.local.json
+.claude/launch.json
+
+# Dossiers de travail locaux (archives, rapports d'audit et de mesure) : jamais partages
+_poubelle/
+_archive/
+_backup/
+_corr/
+audits/

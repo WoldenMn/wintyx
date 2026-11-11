@@ -1,0 +1,3 @@
+# bindings.ts est genere par tauri-specta en LF. Le figer en LF garde le
+# controle de derive de la CI (`git diff --exit-code`) insensible a autocrlf.
+src/lib/bindings.ts text eol=lf
